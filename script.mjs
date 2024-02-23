@@ -32,7 +32,7 @@ document.querySelector('#bsdiff').addEventListener('click', async () => {
   bsdiff.callMain(['/oldFile', '/newFile', '/patchFile']);
   const patchFile = bsdiff.FS.readFile('/patchFile');
   const blob = new Blob([patchFile], { type: 'application/octet-stream' });
-  downloadBlob(blob, `${oldFileData.name}.bsdiff`);
+  downloadBlob(blob, `${oldFile.name}.bsdiff`);
 });
 
 document.querySelector('#bspatch').addEventListener('click', async () => {
