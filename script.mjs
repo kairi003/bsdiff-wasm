@@ -46,7 +46,7 @@ bspatchButton.addEventListener('click', async () => {
   bspatchButton.disabled = false;
   assert(newFileData, newFileData.message || 'Failed to create new file');
   const blob = new Blob([newFileData], { type: oldFile.type });
-  const splitedOldName = oldFile.name.split(',');
+  const splitedOldName = oldFile.name.split('.');
   splitedOldName.splice(-1, 0, 'patched');
   downloadBlob(blob, splitedOldName.join('.'));
 });
