@@ -5,6 +5,7 @@ body {
   padding: 20px;
   margin: 0 auto;
   max-width: 800px;
+  min-width: 200px;
 }
 
 h1,
@@ -63,6 +64,11 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: wait;
 }
 
 section {
