@@ -1,4 +1,4 @@
-import { loadBsdiff, loadBspatch } from './dist/main.mjs';
+import { loadBsdiff, loadBspatch } from '../main.mjs';
 self.onmessage = async (event) => {
   const { type, args } = event.data;
   switch (type) {
@@ -9,7 +9,7 @@ self.onmessage = async (event) => {
       bsdiff.FS.writeFile('/newFile', newFileData);
       bsdiff.callMain(['/oldFile', '/newFile', '/patchFile']);
       const patchFileData = bsdiff.FS.readFile('/patchFile');
-      self.postMessage(patchFileData.buffer, [patchFileData.buffer]);
+      self.postMessage(patchFileData, [patchFileData.buffer]);
       break;
     }
     case 'patch': {
@@ -19,7 +19,8 @@ self.onmessage = async (event) => {
       bspatch.FS.writeFile('/patchFile', patchFileData);
       bspatch.callMain(['/oldFile', '/newFile', '/patchFile']);
       const newFileData = bspatch.FS.readFile('/newFile');
-      self.postMessage(newFileData.buffer, [newFileData.buffer]);
+      console.log('newFileData', newFileData);
+      self.postMessage(newFileData, [newFileData.buffer]);
       break;
     }
   }

@@ -1,6 +1,7 @@
 async function runWorker(message, transferList) {
   return new Promise((resolve, reject) => {
-    const worker = new Worker('./worker.mjs', { type: 'module' });
+    const workerUrl = new URL('./worker.mjs', import.meta.url);
+    const worker = new Worker(workerUrl, { type: 'module' });
     worker.onmessage = (event) => {
       worker.terminate();
       resolve(event.data);
@@ -38,5 +39,4 @@ export async function patch(oldFileData, patchFileData) {
     [oldFileData.buffer, patchFileData.buffer]
   );
 }
-
 
