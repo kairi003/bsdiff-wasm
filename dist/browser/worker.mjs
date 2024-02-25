@@ -19,7 +19,6 @@ self.onmessage = async (event) => {
       bspatch.FS.writeFile('/patchFile', patchFileData);
       bspatch.callMain(['/oldFile', '/newFile', '/patchFile']);
       const newFileData = bspatch.FS.readFile('/newFile');
-      console.log('newFileData', newFileData);
       self.postMessage(newFileData, [newFileData.buffer]);
       break;
     }
