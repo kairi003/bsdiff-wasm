@@ -71,6 +71,23 @@ button:disabled {
   cursor: wait;
 }
 
+button:disabled::after {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  width: 0.8em;
+  height: 0.8em;
+  border: 0.15em solid rgba(255,255,255,0.3);
+  border-top-color: rgba(255,255,255,1);
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 0.2em;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 section {
   background-color: white;
   border: 1px solid #ddd;
